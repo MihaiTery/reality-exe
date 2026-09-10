@@ -80,7 +80,7 @@ export function SystemOpening() {
           className="absolute inset-y-0 left-0 w-1/2 flex items-center justify-end bg-black-reality"
           style={{ x: leftX }}
         >
-          <span className="font-display pr-[3vw] text-[clamp(2.5rem,9vw,6rem)] font-extrabold uppercase tracking-[-0.03em] text-ink-on-black">
+          <span className="font-display pr-[3vw] text-[clamp(1.375rem,7vw,6rem)] font-extrabold uppercase tracking-[-0.03em] text-ink-on-black whitespace-nowrap">
             System
           </span>
         </motion.div>
@@ -89,7 +89,7 @@ export function SystemOpening() {
           className="absolute inset-y-0 right-0 w-1/2 flex items-center justify-start bg-black-reality"
           style={{ x: rightX }}
         >
-          <span className="font-display pl-[3vw] text-[clamp(2.5rem,9vw,6rem)] font-extrabold uppercase tracking-[-0.03em] text-ink-on-black">
+          <span className="font-display pl-[3vw] text-[clamp(1.375rem,7vw,6rem)] font-extrabold uppercase tracking-[-0.03em] text-ink-on-black whitespace-nowrap">
             Opening
           </span>
         </motion.div>
@@ -100,7 +100,7 @@ export function SystemOpening() {
         />
 
         <motion.div
-          className="pointer-events-none absolute inset-x-0 top-1/2 flex -translate-y-1/2 justify-center"
+          className="pointer-events-none absolute inset-x-0 top-[60%] flex justify-center"
           style={{ opacity: readoutOpacity }}
         >
           <span className="font-data text-xs tracking-[0.14em] text-ink-on-black-faint">
