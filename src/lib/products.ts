@@ -78,7 +78,7 @@ export const PRODUCTS: Product[] = [
     designation: "RX-02",
     codename: "QUAD MATRIX",
     category: "Facial System",
-    image: { src: "/products/rx-02-quad-matrix.webp", alt: "RX-02 Quad Matrix, a white rigid-shell face mask with red LED zones lit across the eyes and lower face" },
+    image: { src: "/products/rx-02-quad-matrix.webp", alt: "RX-02 Quad Matrix, a flexible black silicone face mask with adjustable straps and red LED zones lit across the eyes, nose, and mouth" },
     price: 329,
     tagline: "The face gets its own default. Override it.",
     summary:
