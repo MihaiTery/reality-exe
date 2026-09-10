@@ -42,7 +42,15 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-16 flex flex-col-reverse gap-4 border-t border-hairline-black pt-8 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-16 border-t border-hairline-black pt-8">
+          <p className="max-w-2xl font-data text-[11px] leading-relaxed text-ink-on-black-faint">
+            DEMO NOTICE — This site is a design and engineering showcase only. No real
+            transactions, orders, or shipments are processed; products, pricing, and checkout
+            exist for demonstration and testing purposes and do not constitute an offer to sell.
+          </p>
+        </div>
+
+        <div className="mt-6 flex flex-col-reverse gap-4 border-t border-hairline-black pt-8 sm:flex-row sm:items-center sm:justify-between">
           <p className="font-data text-[11px] text-ink-on-black-faint">
             © {new Date().getFullYear()} REALITY.EXE — SYSTEM_BUILD/01 — ALL DEFAULTS QUESTIONED
           </p>
