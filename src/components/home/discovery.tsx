@@ -1,6 +1,8 @@
 "use client";
 
+import { motion, useReducedMotion } from "framer-motion";
 import { Reveal } from "@/components/motion/reveal";
+import { LogoMark } from "@/components/logo/logo";
 
 const params = [
   { id: "PARAM_01", label: "CIRCADIAN WINDOW", status: "FACTORY DEFAULT", active: false },
@@ -9,38 +11,41 @@ const params = [
   { id: "PARAM_04", label: "BASELINE ENERGY", status: "FACTORY DEFAULT", active: false },
 ];
 
-const ringNodes = [
-  { x: 87, y: 23, active: false },
-  { x: 177, y: 87, active: true },
-  { x: 93, y: 178, active: false },
-  { x: 27, y: 73, active: false },
-];
+// The signal node's patrol inside the frame — starts and ends at the
+// mark's actual gap position, so it always reads as coming home.
+const HOME = { left: "25.8%", top: "91.4%" };
+const dotPath = [HOME, { left: "78%", top: "20%" }, { left: "22%", top: "20%" }, HOME];
+
+function SignalDot() {
+  const reduced = useReducedMotion();
+
+  if (reduced) {
+    return (
+      <span
+        className="absolute h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-signal"
+        style={HOME}
+        aria-hidden="true"
+      />
+    );
+  }
+
+  return (
+    <motion.span
+      className="absolute h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-signal shadow-[0_0_10px_2px_oklch(58%_0.223_27_/_0.55)]"
+      animate={{ left: dotPath.map((p) => p.left), top: dotPath.map((p) => p.top) }}
+      transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+      aria-hidden="true"
+    />
+  );
+}
 
 export function Discovery() {
   return (
     <section id="system" className="relative bg-black-reality py-[clamp(5rem,14vh,8rem)]">
       <div className="container-edge mx-auto grid max-w-5xl gap-14 lg:grid-cols-[minmax(0,220px)_1fr] lg:items-center lg:gap-20">
-        <Reveal className="mx-auto w-40 sm:w-48 lg:w-full lg:mx-0" y={16}>
-          <svg viewBox="0 0 200 200" className="w-full text-ink-on-black-faint" aria-hidden="true">
-            <circle
-              cx="100"
-              cy="100"
-              r="78"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1"
-              strokeDasharray="1 7"
-            />
-            {ringNodes.map((n, i) => (
-              <circle
-                key={i}
-                cx={n.x}
-                cy={n.y}
-                r={n.active ? 4.5 : 2.5}
-                className={n.active ? "fill-signal" : "fill-ink-on-black-faint"}
-              />
-            ))}
-          </svg>
+        <Reveal className="relative mx-auto aspect-square w-40 text-ink-on-black-muted sm:w-48 lg:w-full lg:mx-0" y={16}>
+          <LogoMark size={200} showNode={false} className="h-full w-full" />
+          <SignalDot />
         </Reveal>
 
         <div>

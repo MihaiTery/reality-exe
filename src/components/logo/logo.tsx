@@ -1,6 +1,9 @@
 type LogoMarkProps = {
   className?: string;
   size?: number;
+  /** Set false to omit the static node at the frame's gap — used where a
+   * separately animated signal dot takes its place instead. */
+  showNode?: boolean;
 };
 
 /**
@@ -8,7 +11,7 @@ type LogoMarkProps = {
  * a signal node sitting in the gap — the frame that isn't quite closed, and
  * the point where something gets in or out.
  */
-export function LogoMark({ className, size = 32 }: LogoMarkProps) {
+export function LogoMark({ className, size = 32, showNode = true }: LogoMarkProps) {
   return (
     <svg
       width={size}
@@ -24,7 +27,7 @@ export function LogoMark({ className, size = 32 }: LogoMarkProps) {
         strokeWidth="2"
       />
       <path d="M6.5 29H3.5C3.22386 29 3 28.7761 3 28.5V14.5" stroke="currentColor" strokeWidth="2" />
-      <rect x="6" y="27" width="4.5" height="4.5" className="fill-signal" />
+      {showNode && <rect x="6" y="27" width="4.5" height="4.5" className="fill-signal" />}
     </svg>
   );
 }
