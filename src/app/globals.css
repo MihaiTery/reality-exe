@@ -1,0 +1,148 @@
+@import "tailwindcss";
+
+:root {
+  /* ---- Two realities ---- */
+  --reality-black: oklch(9% 0.004 25);
+  --reality-black-raised: oklch(13% 0.006 25);
+  --reality-black-deep: oklch(5.5% 0.003 25);
+  --reality-white: oklch(98.5% 0.002 90);
+  --reality-white-dim: oklch(94% 0.003 90);
+
+  /* ---- Ink ---- */
+  --ink-on-black: oklch(97% 0 0);
+  --ink-on-black-muted: oklch(74% 0.01 25);
+  --ink-on-black-faint: oklch(46% 0.015 25);
+  --ink-on-white: oklch(12% 0.01 25);
+  --ink-on-white-muted: oklch(40% 0.02 25);
+
+  /* ---- Signal red ---- */
+  --signal-red: oklch(58% 0.223 27);
+  --signal-red-bright: oklch(67% 0.235 29);
+  --signal-red-dim: oklch(28% 0.11 25);
+  --signal-red-on-white: oklch(53% 0.22 27);
+
+  /* ---- Hairlines ---- */
+  --hairline-on-black: oklch(100% 0 0 / 0.08);
+  --hairline-on-black-strong: oklch(100% 0 0 / 0.16);
+  --hairline-on-white: oklch(0% 0 0 / 0.1);
+
+  /* ---- Fonts: --font-display / --font-body / --font-data are injected
+     by next/font's variable classes on <html> in layout.tsx ---- */
+
+  /* ---- Layout rhythm ---- */
+  --edge: clamp(1.25rem, 5vw, 4rem);
+  --section-y: clamp(4rem, 12vh, 9rem);
+}
+
+@theme inline {
+  --color-black-reality: var(--reality-black);
+  --color-black-raised: var(--reality-black-raised);
+  --color-black-deep: var(--reality-black-deep);
+  --color-white-reality: var(--reality-white);
+  --color-white-dim: var(--reality-white-dim);
+
+  --color-ink-on-black: var(--ink-on-black);
+  --color-ink-on-black-muted: var(--ink-on-black-muted);
+  --color-ink-on-black-faint: var(--ink-on-black-faint);
+  --color-ink-on-white: var(--ink-on-white);
+  --color-ink-on-white-muted: var(--ink-on-white-muted);
+
+  --color-signal: var(--signal-red);
+  --color-signal-bright: var(--signal-red-bright);
+  --color-signal-dim: var(--signal-red-dim);
+  --color-signal-on-white: var(--signal-red-on-white);
+
+  --color-hairline-black: var(--hairline-on-black);
+  --color-hairline-black-strong: var(--hairline-on-black-strong);
+  --color-hairline-white: var(--hairline-on-white);
+
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-data: var(--font-data);
+
+  --z-index-nav: 60;
+  --z-index-drawer: 70;
+  --z-index-overlay: 80;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--reality-black);
+  color: var(--ink-on-black);
+  font-family: var(--font-body);
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3 {
+  text-wrap: balance;
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+::selection {
+  background: var(--signal-red);
+  color: var(--reality-black);
+}
+
+.font-data {
+  font-family: var(--font-data);
+  letter-spacing: 0.02em;
+}
+
+/* System label: small mono status tag, used sparingly and only for genuine
+   system/state readouts (never as a decorative kicker on every section). */
+.system-label {
+  font-family: var(--font-data);
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.container-edge {
+  padding-left: var(--edge);
+  padding-right: var(--edge);
+}
+
+.section-y {
+  padding-top: var(--section-y);
+  padding-bottom: var(--section-y);
+}
+
+/* Faint structural grid, evokes a system/diagram substrate without
+   being literal terminal noise. Extremely low opacity by design. */
+.grid-substrate {
+  background-image:
+    linear-gradient(to right, oklch(100% 0 0 / 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, oklch(100% 0 0 / 0.035) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+.grid-substrate-dark {
+  background-image:
+    linear-gradient(to right, oklch(0% 0 0 / 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, oklch(0% 0 0 / 0.06) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
