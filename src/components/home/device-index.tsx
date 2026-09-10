@@ -1,8 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { PRODUCTS } from "@/lib/products";
-import { DeviceVisual } from "@/components/product/device-visual";
 import { Reveal, RevealGroup, revealItem } from "@/components/motion/reveal";
 import { useCart } from "@/lib/cart-context";
 import { motion } from "framer-motion";
@@ -38,10 +38,13 @@ export function DeviceIndex() {
                   </span>
                 </div>
 
-                <div className="flex items-center justify-center px-8 py-10">
-                  <DeviceVisual
-                    form={p.form}
-                    className="h-36 w-36 transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+                <div className="relative aspect-[4/5] w-full overflow-hidden">
+                  <Image
+                    src={p.image.src}
+                    alt={p.image.alt}
+                    fill
+                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                    className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
                   />
                 </div>
 

@@ -1,11 +1,13 @@
 export type ProductSpec = { label: string; value: string };
 
+export type ProductImage = { src: string; alt: string };
+
 export type Product = {
   slug: string;
   designation: string; // e.g. "RX-01"
   codename: string; // e.g. "CRANIAL ARRAY"
   category: string; // human category
-  form: "head" | "face" | "body";
+  image: ProductImage;
   price: number;
   tagline: string;
   summary: string;
@@ -20,50 +22,50 @@ export type Product = {
 
 export const PRODUCTS: Product[] = [
   {
-    slug: "rx-01-scalp-wand",
+    slug: "rx-01-cranial-cap",
     designation: "RX-01",
-    codename: "SCALP WAND",
-    category: "Hand-Held Scalp System",
-    form: "head",
+    codename: "CRANIAL CAP",
+    category: "Head / Scalp System",
+    image: { src: "/products/rx-01-cranial-cap.webp", alt: "RX-01 Cranial Cap, a soft-shell red-light cap with a visible 850nm LED array lining the crown" },
     price: 149,
-    tagline: "Aim it. Ten minutes. Override starts at the root.",
+    tagline: "Wear it. Ten minutes. Override starts at the root.",
     summary:
-      "A battery-powered near-infrared wand built for direct scalp passes — an onboard LED display tracks the session while a textile-wrapped grip keeps it steady in one hand.",
+      "A soft-shell red-light cap built for a fixed daily session — an 850nm near-infrared array lines the crown, run hands-free from a battery pack with an onboard LED display.",
     status: "IN STOCK",
     benefits: [
-      "850nm near-infrared output aimed directly at the scalp, pass by pass",
-      "Onboard LED display screen tracks session status at a glance",
+      "850nm near-infrared array lines the full crown for hands-free scalp coverage",
       "Battery-powered — no cable tethering you to an outlet mid-session",
-      "Textile-wrapped grip stays steady through a full routine",
+      "Onboard LED display tracks session status at a glance",
+      "Soft textile shell adjusts like a standard cap, one size fits most",
     ],
     specs: [
       { label: "WAVELENGTH", value: "850nm near-infrared" },
       { label: "IRRADIANCE", value: "Placeholder — pending bench data" },
       { label: "DIODE COUNT", value: "Placeholder — pending bench data" },
-      { label: "SESSION LENGTH", value: "5 / 10 min presets (placeholder)" },
+      { label: "SESSION LENGTH", value: "10 / 15 / 20 min presets (placeholder)" },
       { label: "POWER", value: "Battery-powered (cell spec placeholder)" },
       { label: "DISPLAY", value: "Onboard LED display screen" },
       { label: "EMC / SAFETY", value: "Bench-tested, pending final cert (placeholder)" },
     ],
     usage: [
-      "Power on and select a preset from the LED display.",
-      "Glide the wand slowly across dry scalp in overlapping passes.",
-      "Session ends automatically on the display; wipe the head down after use.",
+      "Put the cap on and power on from the LED display.",
+      "Select a session preset — the array runs hands-free while you go about a normal routine.",
+      "Session ends automatically on the display; wipe the interior after use.",
     ],
     dimensions: [
       { label: "WEIGHT", value: "Placeholder — pending bench data" },
-      { label: "SIZE", value: "One-hand handheld form (placeholder)" },
-      { label: "MATERIALS", value: "Textile-wrapped grip, polymer housing (placeholder)" },
+      { label: "SIZE", value: "One size, adjustable strap" },
+      { label: "MATERIALS", value: "Soft textile shell (frame spec placeholder)" },
     ],
-    inBox: ["RX-01 Scalp Wand", "Charge cable", "Travel pouch", "Quick-start card"],
+    inBox: ["RX-01 Cranial Cap", "Charge cable", "Travel pouch", "Quick-start card"],
     faqs: [
       {
         q: "Is this safe for daily use?",
-        a: "RX-01 is designed for short daily passes. Full safety and usage documentation ships with the unit and will be published in full ahead of launch — figures on this page are pre-launch placeholders.",
+        a: "RX-01 is designed for one session per day. Full safety and usage documentation ships with the unit and will be published in full ahead of launch — figures on this page are pre-launch placeholders.",
       },
       {
-        q: "Do I need to recharge it before every session?",
-        a: "A full charge is built to cover multiple sessions; exact runtime figures are pending bench data and will be published at launch.",
+        q: "Does it work with all hair types and lengths?",
+        a: "The cap is built for close scalp proximity; very dense or long hair may reduce effective output and is addressed in the included usage guide.",
       },
       {
         q: "What's the warranty?",
@@ -76,7 +78,7 @@ export const PRODUCTS: Product[] = [
     designation: "RX-02",
     codename: "QUAD MATRIX",
     category: "Facial System",
-    form: "face",
+    image: { src: "/products/rx-02-quad-matrix.webp", alt: "RX-02 Quad Matrix, a white rigid-shell face mask with red LED zones lit across the eyes and lower face" },
     price: 329,
     tagline: "The face gets its own default. Override it.",
     summary:
@@ -128,7 +130,7 @@ export const PRODUCTS: Product[] = [
     designation: "RX-03",
     codename: "RECLINE ARRAY",
     category: "Full-Body System",
-    form: "body",
+    image: { src: "/products/rx-03-recline-array.webp", alt: "RX-03 Recline Array, a large rectangular red LED mat glowing fully lit on a white plinth" },
     price: 549,
     tagline: "The whole body, one session, no defaults spared.",
     summary:

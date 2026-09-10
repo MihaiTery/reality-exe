@@ -1,8 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { PRODUCTS } from "@/lib/products";
-import { DeviceVisual } from "@/components/product/device-visual";
 import { useCart } from "@/lib/cart-context";
 import { Reveal } from "@/components/motion/reveal";
 
@@ -17,9 +17,15 @@ export function ShopManifest() {
             <div className="flex flex-col gap-5 border-b border-hairline-white py-8 sm:flex-row sm:items-center sm:gap-8">
               <Link
                 href={`/product/${p.slug}`}
-                className="flex shrink-0 items-center justify-center border border-hairline-white bg-white-dim sm:w-32"
+                className="relative aspect-[4/5] w-full shrink-0 overflow-hidden border border-hairline-white bg-white-dim sm:w-32"
               >
-                <DeviceVisual form={p.form} className="h-24 w-24" />
+                <Image
+                  src={p.image.src}
+                  alt={p.image.alt}
+                  fill
+                  sizes="128px"
+                  className="object-cover"
+                />
               </Link>
 
               <div className="min-w-0 flex-1">

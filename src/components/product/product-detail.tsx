@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import type { Product } from "@/lib/products";
-import { DeviceVisual } from "@/components/product/device-visual";
 import { useCart } from "@/lib/cart-context";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/motion/reveal";
@@ -33,8 +33,15 @@ export function ProductDetail({ product }: { product: Product }) {
 
       {/* Hero / purchase block */}
       <div className="container-edge mx-auto grid max-w-5xl gap-10 pb-16 lg:grid-cols-2 lg:gap-16">
-        <Reveal className="flex items-center justify-center border border-hairline-white bg-white-dim p-10 sm:p-16">
-          <DeviceVisual form={product.form} className="h-64 w-64 sm:h-72 sm:w-72" />
+        <Reveal className="relative aspect-[4/5] overflow-hidden border border-hairline-white bg-white-dim">
+          <Image
+            src={product.image.src}
+            alt={product.image.alt}
+            fill
+            sizes="(min-width: 1024px) 40vw, 100vw"
+            className="object-cover"
+            priority
+          />
         </Reveal>
 
         <Reveal delay={0.08}>
