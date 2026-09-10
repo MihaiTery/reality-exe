@@ -28,8 +28,16 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
+// Points OG/canonical URLs at wherever the site is actually live. Swap this
+// back to the bare domain once realityexe.com's DNS is pointed at this repo
+// (and drop GITHUB_PAGES handling in next.config.ts at the same time).
+const siteUrl =
+  process.env.GITHUB_PAGES === "true"
+    ? "https://mihaitery.github.io/reality-exe/"
+    : "https://realityexe.com";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://realityexe.com"),
+  metadataBase: new URL(siteUrl),
   title: {
     default: "REALITY.EXE — The default is not mandatory.",
     template: "%s — REALITY.EXE",
@@ -48,9 +56,15 @@ export const metadata: Metadata = {
     title: "REALITY.EXE — The default is not mandatory.",
     description:
       "Premium red-light technology for people who question the default settings of their body and environment.",
-    url: "https://realityexe.com",
+    url: siteUrl,
     siteName: "REALITY.EXE",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "REALITY.EXE — The default is not mandatory.",
+    description:
+      "Premium red-light technology for people who question the default settings of their body and environment.",
   },
 };
 
